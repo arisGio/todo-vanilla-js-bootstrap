@@ -5,14 +5,23 @@ const remainingTasks = document.querySelector("#remaining-tasks");
 const completedTasks = document.querySelector("#completed-tasks");
 const mainInput = document.querySelector("form input");
 
+/**
+ * Load tasks, if any, from local storage
+ */
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
+/**
+ * If not empty then create tasks
+ */
 if (localStorage.getItem("tasks")) {
   tasks.map((task) => {
     createTask(task);
   });
 }
 
+/**
+ * Listens for form submission
+ */
 todoForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -36,6 +45,9 @@ todoForm.addEventListener("submit", (e) => {
   mainInput.focus();
 });
 
+/**
+ * Listens for click on a specific task
+ */
 todoList.addEventListener("click", (e) => {
   if (
     e.target.classList.contains("remove-task") ||
@@ -46,6 +58,10 @@ todoList.addEventListener("click", (e) => {
   }
 });
 
+/**
+ * Create a task
+ * @param task
+ */
 function createTask(task) {
   const taskEl = document.createElement("div");
   taskEl.setAttribute("id", task.id);
@@ -95,6 +111,9 @@ function createTask(task) {
   countTasks();
 }
 
+/**
+ * Count remaining, completed and total tasks
+ */
 function countTasks() {
   const completedTasksArray = tasks.filter((task) => task.isCompleted);
   totalTasks.textContent = tasks.length;
@@ -102,6 +121,10 @@ function countTasks() {
   remainingTasks.textContent = tasks.length - completedTasksArray.length;
 }
 
+/**
+ * Delete a task by id
+ * @param id
+ */
 function removeTask(id) {
   tasks = tasks.filter((task) => task.id !== parseInt(id));
 
