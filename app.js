@@ -36,6 +36,13 @@ todoForm.addEventListener("submit", (e) => {
   mainInput.focus();
 });
 
+todoList.addEventListener("click", (e) => {
+  if (e.target.classList.contains("remove-task")) {
+    const taskId = e.target.closest("div").id;
+    removeTask(taskId);
+  }
+});
+
 function createTask(task) {
   const taskEl = document.createElement("div");
   taskEl.setAttribute("id", task.id);
@@ -73,7 +80,7 @@ function createTask(task) {
           </div>
           <button title='Remove the "${
             task.name
-          }" task' class="btn btn-danger col-1" type="button">
+          }" task' class="btn btn-danger col-1 remove-task" type="button">
             <i class="fa fa-trash"></i>
           </button>
   `;
@@ -90,4 +97,14 @@ function countTasks() {
   totalTasks.textContent = tasks.length;
   completedTasks.textContent = completedTasksArray.length;
   remainingTasks.textContent = tasks.length - completedTasksArray.length;
+}
+
+function removeTask(id) {
+  tasks = tasks.filter((task) => task.id !== parseInt(id));
+
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+
+  document.getElementById(id).remove();
+
+  countTasks();
 }
