@@ -68,6 +68,16 @@ todoList.addEventListener("input", (e) => {
 });
 
 /**
+ * Listens for enter pressed and prevent new line, exit edit mode
+ */
+todoList.addEventListener("keydown", (e) => {
+  if (e.keyCode === 13) {
+    e.preventDefault();
+    e.target.blur();
+  }
+});
+
+/**
  * Create a task
  * @param task
  */
@@ -144,6 +154,11 @@ function removeTask(id) {
   countTasks();
 }
 
+/**
+ * Updates a task on content edit or box checked
+ * @param {*} id
+ * @param {*} elem
+ */
 function updateTask(id, elem) {
   const task = tasks.find((item) => item.id === parseInt(id));
 
