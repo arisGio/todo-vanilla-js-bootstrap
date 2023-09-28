@@ -23,4 +23,56 @@ todoForm.addEventListener("submit", (e) => {
 
   tasks.push(task);
   localStorage.setItem("tasks", JSON.stringify(tasks));
+
+  createTask(task);
+
+  todoForm.reset();
+  mainInput.focus();
 });
+
+function createTask(task) {
+  const taskEl = document.createElement("div");
+  taskEl.setAttribute("id", task.id);
+  taskEl.classList.add(
+    "row",
+    "align-items-center",
+    "bg-warning",
+    "rounded",
+    "p-2",
+    "justify-content-between",
+    "col-12",
+    "col-lg-6",
+    "mx-auto",
+    "mb-1"
+  );
+
+  const taskElMarkup = `
+          <div class="form-check col-5">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="${task.id}-checkbox"
+              ${task.isCompleted ? "checked" : ""}
+            />
+            <label
+              class="form-check-label ${
+                task.isCompleted ? "text-decoration-line-through" : ""
+              }"
+              for="${task.id}-checkbox"
+              ${!task.isCompleted ? "contenteditable" : ""}
+            >
+              ${task.name}
+            </label>
+          </div>
+          <button title='Remove the "${
+            task.name
+          }" task' class="btn btn-danger col-1" type="button">
+            <i class="fa fa-trash"></i>
+          </button>
+  `;
+
+  taskEl.innerHTML = taskElMarkup;
+
+  todoList.appendChild(taskEl);
+}
