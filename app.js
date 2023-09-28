@@ -59,6 +59,15 @@ todoList.addEventListener("click", (e) => {
 });
 
 /**
+ * Listens for task edit text
+ */
+todoList.addEventListener("input", (e) => {
+  const taskId = e.target.parentElement.parentElement.id;
+  console.log("yooooooo");
+  updateTask(taskId, e.target);
+});
+
+/**
  * Create a task
  * @param task
  */
@@ -131,6 +140,29 @@ function removeTask(id) {
   localStorage.setItem("tasks", JSON.stringify(tasks));
 
   document.getElementById(id).remove();
+
+  countTasks();
+}
+
+function updateTask(id, elem) {
+  const task = tasks.find((item) => item.id === parseInt(id));
+
+  if (elem.hasAttribute("contenteditable")) {
+    task.name = elem.textContent;
+  } else {
+    const label = elem.nextElementSibling;
+    task.isCompleted = !task.isCompleted;
+
+    if (task.isCompleted) {
+      label.removeAttribute("contenteditable");
+      label.classList.add("text-decoration-line-through");
+    } else {
+      label.setAttribute("contenteditable", "true");
+      label.classList.remove("text-decoration-line-through");
+    }
+  }
+
+  localStorage.setItem("tasks", JSON.stringify(tasks));
 
   countTasks();
 }
