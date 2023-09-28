@@ -37,7 +37,10 @@ todoForm.addEventListener("submit", (e) => {
 });
 
 todoList.addEventListener("click", (e) => {
-  if (e.target.classList.contains("remove-task")) {
+  if (
+    e.target.classList.contains("remove-task") ||
+    e.target.parentElement.classList.contains("remove-task")
+  ) {
     const taskId = e.target.closest("div").id;
     removeTask(taskId);
   }
