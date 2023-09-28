@@ -13,9 +13,11 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
+    <script src="app.js" defer></script>
     <title>To-do App</title>
   </head>
   <body>
+    <!-- ------------------------ HEADER ------------------------ -->
     <header class="container p-5 bg-warning border rounded mt-0 mt-sm-5">
       <h1>To do list application</h1>
       <form>
@@ -33,19 +35,21 @@
         </div>
       </form>
     </header>
+    <!-- ------------------------ BADGES ------------------------ -->
     <main class="container text-center mt-5">
       <section>
         <button type="button" class="btn btn-warning">
-          To do <span class="badge bg-primary">4</span>
+          To do <span class="badge bg-primary" id="remaining-tasks">4</span>
         </button>
         <button type="button" class="btn btn-warning">
-          Completed <span class="badge bg-success">4</span>
+          Completed <span class="badge bg-success" id="completed-tasks">4</span>
         </button>
         <button type="button" class="btn btn-warning">
-          Total <span class="badge bg-dark">4</span>
+          Total <span class="badge bg-dark" id="total-tasks">4</span>
         </button>
       </section>
-      <section class="container mt-5">
+      <!-- ------------------------ TODOS ------------------------ -->
+      <section class="container mt-5 todos">
         <div
           class="row align-items-center bg-warning rounded p-2 justify-content-between col-12 col-lg-6 mx-auto mb-1"
         >
