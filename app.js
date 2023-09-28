@@ -81,4 +81,13 @@ function createTask(task) {
   taskEl.innerHTML = taskElMarkup;
 
   todoList.appendChild(taskEl);
+
+  countTasks();
+}
+
+function countTasks() {
+  const completedTasksArray = tasks.filter((task) => task.isCompleted);
+  totalTasks.textContent = tasks.length;
+  completedTasks.textContent = completedTasksArray.length;
+  remainingTasks.textContent = tasks.length - completedTasksArray.length;
 }
