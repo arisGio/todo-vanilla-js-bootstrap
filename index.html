@@ -9,6 +9,10 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <title>To-do App</title>
   </head>
   <body>
@@ -32,14 +36,55 @@
     <main class="container text-center mt-5">
       <section>
         <button type="button" class="btn btn-warning">
-          To do <span class="badge bg-secondary">4</span>
+          To do <span class="badge bg-primary">4</span>
         </button>
         <button type="button" class="btn btn-warning">
-          Completed <span class="badge bg-secondary">4</span>
+          Completed <span class="badge bg-success">4</span>
         </button>
         <button type="button" class="btn btn-warning">
-          Total <span class="badge bg-secondary">4</span>
+          Total <span class="badge bg-dark">4</span>
         </button>
+      </section>
+      <section class="container mt-5">
+        <div
+          class="row align-items-center bg-warning rounded p-2 justify-content-between col-12 col-lg-6 mx-auto mb-1"
+        >
+          <div class="form-check col-5">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="flexCheckDefault"
+            />
+            <label
+              class="form-check-label text-decoration-line-through"
+              for="flexCheckDefault"
+            >
+              This is a to do item
+            </label>
+          </div>
+          <button class="btn btn-danger col-1" type="button">
+            <i class="fa fa-trash"></i>
+          </button>
+        </div>
+        <div
+          class="row align-items-center bg-warning rounded p-2 justify-content-between col-12 col-lg-6 mx-auto mb-1"
+        >
+          <div class="form-check col-5">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="asdf"
+            />
+            <label class="form-check-label" for="asdf">
+              This is a to do item
+            </label>
+          </div>
+          <button class="btn btn-danger col-1 text-center" type="button">
+            <i class="fa fa-trash"></i>
+          </button>
+        </div>
       </section>
     </main>
     <script
