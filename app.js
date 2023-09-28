@@ -103,14 +103,12 @@ function createTask(task) {
               class="form-check-input"
               type="checkbox"
               value=""
-              id="${task.id}-checkbox"
               ${task.isCompleted ? "checked" : ""}
             />
             <label
               class="form-check-label ${
                 task.isCompleted ? "text-decoration-line-through" : ""
               }"
-              for="${task.id}-checkbox"
               ${!task.isCompleted ? "contenteditable" : ""}
             >
               ${task.name}
